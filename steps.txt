@@ -1,0 +1,20 @@
+Defined a CUDA kernel for bodyForce.
+Allocate memory on the device using cudaMalloc.
+Transfer data between the host and the device using cudaMemcpy.
+Launch the CUDA kernel with appropriate grid and block sizes.
+Free the device memory after computation.
+
+
+>> Further Optimization
+
+
+Reduced Memory Transfers:
+
+Moved position update kernel (integratePositions) to GPU to reduce memory transfers.
+Removed redundant memory copies (Fx, Fy, Fz) from device to host.
+Improved Memory Access Patterns:
+
+Used rsqrtf for faster inverse square root computation.
+Error Checking:
+
+Added cudaDeviceSynchronize to ensure all kernel executions complete before proceeding.
