@@ -1,0 +1,11 @@
+pgcc -acc -fast -o nbody_openacc nbody_openacc.c -ta=tesla:cc
+
+nvcc -o nbody_cuda nbody_cuda.cu
+
+mpicc -o nbody_mpi nbody_mpi.c -lm
+
+
+mpirun -np 4 ./nbody_mpi
+
+module load intel/oneapi
+dpcpp -o nbody_sycl nbody_sycl.cpp
